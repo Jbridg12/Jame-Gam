@@ -9,7 +9,7 @@ netElapsedTime = 0;
 // Table Parameters
 maxSeats = 5;
 seatList = array_create(maxSeats);
-emptySeats = array_create_ext(maxSeats, seat_init(index));
+emptySeats = array_create_ext(maxSeats, seat_init);
 
 
 

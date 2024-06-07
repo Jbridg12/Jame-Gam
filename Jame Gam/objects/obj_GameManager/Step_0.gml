@@ -24,7 +24,7 @@ if(loopElapsedTime >= 1)
 {
 	loopElapsedTime = 0;
 	
-	if(random_range(0, 1) < p_new_player)
+	if(random_range(0, 1) < p_new_player && array_length(emptySeats) > 0)
 	{
 		var _seatIndex = floor(random_range(0, array_length(emptySeats)));
 		var _seat = emptySeats[_seatIndex];
@@ -35,7 +35,8 @@ if(loopElapsedTime >= 1)
 		var _newPlayer = {
 			seat : _seat,
 			button : _seat + 1,
-			temper : baseHitTimer + (weightedHitTimer * random_range(0, 1)),
+			baseTemper : baseHitTimer + (weightedHitTimer * random_range(0, 1)),
+			temper : baseTemper,
 			hasHit : false,
 			isHitting : false,
 		};
@@ -64,7 +65,7 @@ if(loopElapsedTime >= 1)
 		}
 		else if(_i.hasHit && random_range(0, 1) < p_fold)
 		{
-			// Handle Player Leaving Seat
+			// Handle Player Leaving Seat ( FOLD)
 			array_push(emptySeats, _player.seat);
 			array_delete(seatList, _i, 1);
 			with(obj_alert)
@@ -85,7 +86,7 @@ if(loopElapsedTime >= 1)
 				if(index == _player.seat)
 				{
 					active = true;
-					// Hit on
+					text = "Hit";
 				}
 			}
 			
@@ -104,13 +105,14 @@ for(var _i = 0; _i < array_length(seatList); _i++)
 {
 	var _player = seatList[_i];
 	
-	if(keyboard_check(ord(_player.button))
+	if(keyboard_check(ord(_player.button)))
 	{
 		with(obj_alert)
 		{
-			if(index == _player.seat)
+			if(index == _player.seat && _player.isHitting)
 			{
 				active = false;
+				_player.temper = _player.baseTemper;
 			}
 		}
 	}

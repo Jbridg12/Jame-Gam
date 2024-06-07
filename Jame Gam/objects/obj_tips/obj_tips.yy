@@ -1,12 +1,12 @@
 {
   "$GMObject":"",
-  "%Name":"obj_alert",
+  "%Name":"obj_tips",
   "eventList":[
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_alert",
+  "name":"obj_tips",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
@@ -26,19 +26,13 @@
   "physicsShape":1,
   "physicsShapePoints":[],
   "physicsStartAwake":true,
-  "properties":[
-    {"$GMObjectProperty":"v1","%Name":"index","filters":[],"listItems":[],"multiselect":false,"name":"index","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":1,},
-    {"$GMObjectProperty":"v1","%Name":"text","filters":[],"listItems":[
-        "\"Hit\"",
-        "\"Fold\"",
-      ],"multiselect":false,"name":"text","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"Fold\"","varType":6,},
-  ],
+  "properties":[],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_HitImage",
-    "path":"sprites/spr_HitImage/spr_HitImage.yy",
+    "name":"spr_TipJar",
+    "path":"sprites/spr_TipJar/spr_TipJar.yy",
   },
   "spriteMaskId":null,
   "visible":true,
