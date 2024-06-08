@@ -17,6 +17,13 @@ function hit(_player)
 		availableCards--;	
 	}
 	
+	with(obj_hand)
+	{
+		if(index == _player.seat)
+		{
+			event_user(0);
+		}
+	}
 	
 	// Start Cooldown (quickens with difficulty)
 	_player.patienceTimer = _player.basePatience;
@@ -112,7 +119,7 @@ function leave(_player)
 	{
 		if (index == _player.seat)
 		{
-			//active = false;
+			event_user(0);
 			alarm[1] = game_get_speed(gamespeed_fps) * 2;
 		}
 	}

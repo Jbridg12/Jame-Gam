@@ -118,7 +118,14 @@ for(var _i = 0; _i < array_length(seatList); _i++)
 				active = true;
 			}
 		}
-			
+		
+		with(obj_hand)
+		{
+			if(index == _player.seat)
+			{
+				image_speed = 1;
+			}
+		}	
 		_player.isHitting = true;
 		_player.hits++;
 	}
