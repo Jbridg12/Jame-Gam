@@ -43,6 +43,7 @@
     {"id":{"name":"obj_Button","path":"objects/obj_Button/obj_Button.yy",},},
     {"id":{"name":"obj_card","path":"objects/obj_card/obj_card.yy",},},
     {"id":{"name":"obj_CollectedCards","path":"objects/obj_CollectedCards/obj_CollectedCards.yy",},},
+    {"id":{"name":"obj_FoldedCards","path":"objects/obj_FoldedCards/obj_FoldedCards.yy",},},
     {"id":{"name":"obj_GameManager","path":"objects/obj_GameManager/obj_GameManager.yy",},},
     {"id":{"name":"obj_hand","path":"objects/obj_hand/obj_hand.yy",},},
     {"id":{"name":"obj_Key","path":"objects/obj_Key/obj_Key.yy",},},
