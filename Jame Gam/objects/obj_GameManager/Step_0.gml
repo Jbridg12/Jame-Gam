@@ -1,9 +1,9 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-
-loopElapsedTime += delta_time/1000000;
-netElapsedTime += delta_time/1000000;
+var _dT = delta_time/1000000;
+loopElapsedTime += _dT;
+netElapsedTime += _dT;
 
 if(remainingLives <= 0)
 {
@@ -44,7 +44,8 @@ if(loopElapsedTime >= 1)
 			hits : 0,
 			isHitting : false,
 			isCooldown : false,
-			hitCooldown : _patience - baseHitTimer
+			hitCooldown : _patience - baseHitTimer,
+			actionCooldown : actionCooldownBase / global.difficulty
 		};
 		
 		seatList[_seat] =  _newPlayer;
@@ -66,56 +67,62 @@ if(loopElapsedTime >= 1)
 		}
 
 	}
-	
-	for(var _i = 0; _i < array_length(seatList); _i++)
-	{
-		var _player = seatList[_i];
-		if(!_player) continue;
+}
+
+for(var _i = 0; _i < array_length(seatList); _i++)
+{
+	var _player = seatList[_i];
+	if(!_player) continue;
 		
-		var _hitsWeight = _player.hits * 0.25;
-		var _pFold = min((pFold + (_player.temper * 0.5)) * _hitsWeight, 0.9);
-		if(_player.isHitting)
+	if(_player.isHitting)
+	{
+		_player.patienceTimer -= _dT;
+		if(_player.patienceTimer <= 0)
 		{
-			if(--_player.patienceTimer <= 0)
-			{
-				//Lose Health and Leave
-				remainingLives--;
-				//tipScore -= 100;
+			//Lose Health and Leave
+			remainingLives--;
+			//tipScore -= 100;
 				
-				// Handle Player Leaving Seat
-				leave(_player);
-			}
+			// Handle Player Leaving Seat
+			leave(_player);
 		}
-		else if(_player.isCooldown)
+		continue;
+	}
+	else if(_player.isCooldown)
+	{
+		_player.hitCooldown -= _dT;
+		if(_player.hitCooldown <= 0)
 		{
-			if(--_player.hitCooldown <= 0)
-			{
-				_player.hitCooldown	= _player.basePatience - baseHitTimer;
-				_player.isCooldown = false;
-			}
+			_player.hitCooldown	= _player.basePatience - baseHitTimer;
+			_player.isCooldown = false;
 		}
-		else if(random_range(0, 1) < _pFold)
-		{
-			// Handle Player Leaving Seat (FOLD)
-			fold(_player);
-		}
-		else if(random_range(0, 1) < pHit)
-		{
-			with(obj_alert)
-			{
-				if(index == _player.seat)
-				{
-					text = "Hit";
-					active = true;
-				}
-			}
-			
-			_player.isHitting = true;
-			_player.hits++;
-		}
+		continue;
 	}
 	
+	_player.actionCooldown -= _dT;
+	if(_player.actionCooldown > 0) continue;
 	
+	var _foldWeight = _player.hits * 0.25;
+	var _pFold = min((pFold + (_player.temper * 0.5)) * _foldWeight, 0.9);
+	if(random_range(0, 1) < _pFold)
+	{
+		// Handle Player Leaving Seat (FOLD)
+		fold(_player);
+	}
+	else if(random_range(0, 1) < pHit)
+	{
+		with(obj_alert)
+		{
+			if(index == _player.seat)
+			{
+				text = "Hit";
+				active = true;
+			}
+		}
+			
+		_player.isHitting = true;
+		_player.hits++;
+	}
 }
 
 

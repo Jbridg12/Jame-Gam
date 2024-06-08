@@ -21,6 +21,8 @@ pFold = 0.2;
 // Timer
 baseHitTimer = 5;
 weightedHitTimer = 5;
+hitCooldown = 5;
+actionCooldownBase = 2;
 
 
 //Victory Conditions
