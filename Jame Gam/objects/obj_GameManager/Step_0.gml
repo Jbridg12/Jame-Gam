@@ -3,7 +3,7 @@
 
 var _dT = delta_time/1000000;
 loopElapsedTime += _dT;
-netElapsedTime += _dT;
+difficultyTimer += _dT;
 
 if(remainingLives <= 0)
 {
@@ -12,9 +12,10 @@ if(remainingLives <= 0)
 }
 
 //Perform Significant Difficulty Upgrades
-if(netElapsedTime >= 30)
+if(difficultyTimer >= 30)
 {
 	global.difficulty ++;
+	difficultyTimer = 0;
 	
 }
 
@@ -77,6 +78,17 @@ for(var _i = 0; _i < array_length(seatList); _i++)
 	if(_player.isHitting)
 	{
 		_player.patienceTimer -= _dT;
+		if(_player.patienceTimer <= 5)
+		{
+			with(obj_alert)
+			{
+				if(index == _player.seat)
+				{
+					// Fold on
+					text = "Uh..."
+				}
+			}
+		}
 		if(_player.patienceTimer <= 0)
 		{
 			//Lose Health and Leave
@@ -137,7 +149,7 @@ for(var _i = 0; _i < array_length(seatList); _i++)
 	
 	if(keyboard_check(ord(_player.button)))
 	{
-		if(_player.isHitting)
+		if(_player.isHitting && !shufflePrompt)
 		{
 			
 			hit(_player);

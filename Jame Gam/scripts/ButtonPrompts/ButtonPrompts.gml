@@ -103,11 +103,16 @@ function leave(_player)
 		{
 			// Fold on
 			active = true
-			text = "Ugh"
+			text = "I'm Out"
 			alarm[0] = game_get_speed(gamespeed_fps) * 2;
 		}
 	}
+	
 	// Take cards into pile
+	with(obj_CollectedCards)
+	{
+		collectedCards += _player.hits;
+	}
 }
 
 function shuffle()

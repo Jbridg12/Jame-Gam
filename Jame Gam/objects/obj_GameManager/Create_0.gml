@@ -5,7 +5,7 @@
 shufflePrompt = false;
 
 loopElapsedTime = 0;
-netElapsedTime = 0;
+difficultyTimer = 0;
 
 
 // Table Parameters
