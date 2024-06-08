@@ -101,6 +101,7 @@ for(var _i = 0; _i < array_length(seatList); _i++)
 	
 	_player.actionCooldown -= _dT;
 	if(_player.actionCooldown > 0) continue;
+	_player.actionCooldown =  actionCooldownBase / global.difficulty;
 	
 	var _foldWeight = _player.hits * 0.25;
 	var _pFold = min((pFold + (_player.temper * 0.5)) * _foldWeight, 0.9);
@@ -123,6 +124,7 @@ for(var _i = 0; _i < array_length(seatList); _i++)
 		_player.isHitting = true;
 		_player.hits++;
 	}
+	
 }
 
 
