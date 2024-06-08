@@ -14,9 +14,9 @@ emptySeats = array_create_ext(maxSeats, seat_init);
 
 
 // Probabilities
-pNewPlayer = 0.1;
-pHit = 0.5;
-pFold = 0.5;
+pNewPlayer = 0.5;
+pHit = 0.75;
+pFold = 0.2;
 
 // Timer
 baseHitTimer = 5;
@@ -26,3 +26,4 @@ weightedHitTimer = 5;
 //Victory Conditions
 tipScore = 0;
 remainingLives = 5;
+

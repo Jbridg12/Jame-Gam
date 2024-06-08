@@ -24,74 +24,94 @@ if(loopElapsedTime >= 1)
 {
 	loopElapsedTime = 0;
 	
-	if(random_range(0, 1) < p_new_player && array_length(emptySeats) > 0)
+	if(random_range(0, 1) < pNewPlayer && array_length(emptySeats) > 0)
 	{
 		var _seatIndex = floor(random_range(0, array_length(emptySeats)));
 		var _seat = emptySeats[_seatIndex];
 		
 		array_delete(emptySeats, _seatIndex, 1);
 		
+		var _temper = random_range(0, 1);
+		var _patience = baseHitTimer + (weightedHitTimer * _temper);
+		
 		// Construct new Player at table
 		var _newPlayer = {
 			seat : _seat,
 			button : _seat + 1,
-			baseTemper : baseHitTimer + (weightedHitTimer * random_range(0, 1)),
-			temper : baseTemper,
-			hasHit : false,
+			basePatience : _patience,
+			patienceTimer : _patience,
+			temper : _temper,
+			hits : 0,
 			isHitting : false,
+			isCooldown : false,
+			hitCooldown : _patience - baseHitTimer
 		};
 		
-		array_insert(seatList, _seat, _newPlayer);
+		seatList[_seat] =  _newPlayer;
 		
+		with(obj_hand)
+		{
+			if (index == _seat)
+			{
+				active = true;
+			}
+		}
+		with(obj_Key)
+		{
+			if (index == _seat)
+			{
+				active = true;
+				text = string("{0}", _newPlayer.button);
+			}
+		}
 
 	}
 	
 	for(var _i = 0; _i < array_length(seatList); _i++)
 	{
 		var _player = seatList[_i];
+		if(!_player) continue;
 		
-		if(isHitting)
+		var _hitsWeight = _player.hits * 0.25;
+		var _pFold = min((pFold + (_player.temper * 0.5)) * _hitsWeight, 0.9);
+		if(_player.isHitting)
 		{
-			if(--temper <= 0)
+			if(--_player.patienceTimer <= 0)
 			{
 				//Lose Health and Leave
-				remianingLives--;
+				remainingLives--;
 				//tipScore -= 100;
 				
 				// Handle Player Leaving Seat
-				array_push(emptySeats, _player.seat);
-				array_delete(seatList, _i, 1);
+				leave(_player);
 			}
 		}
-		else if(_i.hasHit && random_range(0, 1) < p_fold)
+		else if(_player.isCooldown)
 		{
-			// Handle Player Leaving Seat ( FOLD)
-			array_push(emptySeats, _player.seat);
-			array_delete(seatList, _i, 1);
-			with(obj_alert)
+			if(--_player.hitCooldown <= 0)
 			{
-				if(index == _player.seat)
-				{
-					active = true
-					timer = 5;
-					// Fold on
-				}
+				_player.hitCooldown	= _player.basePatience - baseHitTimer;
+				_player.isCooldown = false;
 			}
-			
 		}
-		else if(random_range(0, 1) < p_hit)
+		else if(random_range(0, 1) < _pFold)
+		{
+			// Handle Player Leaving Seat (FOLD)
+			fold(_player);
+		}
+		else if(random_range(0, 1) < pHit)
 		{
 			with(obj_alert)
 			{
 				if(index == _player.seat)
 				{
-					active = true;
 					text = "Hit";
+					active = true;
 				}
 			}
 			
 			_player.isHitting = true;
-			_player.hasHit = true;
+			_player.hits++;
 		}
 	}
 	
@@ -104,16 +124,15 @@ if(loopElapsedTime >= 1)
 for(var _i = 0; _i < array_length(seatList); _i++)
 {
 	var _player = seatList[_i];
+	if(!_player) continue;
 	
 	if(keyboard_check(ord(_player.button)))
 	{
-		with(obj_alert)
+		if(_player.isHitting)
 		{
-			if(index == _player.seat && _player.isHitting)
-			{
-				active = false;
-				_player.temper = _player.baseTemper;
-			}
+			
+			hit(_player);
+			_player.isHitting = false;
 		}
 	}
 }
