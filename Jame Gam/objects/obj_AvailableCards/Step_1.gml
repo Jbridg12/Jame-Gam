@@ -5,12 +5,11 @@ if(availableCards <= 0)
 {
 	with(obj_GameManager)
 	{
-		shufflePrompt = true;	
+		if(!shufflePrompt)
+		{
+			shufflePrompt = true;	
+			layer_sequence_create("Instances", 778, 450, ShufflePrompt);
+		}
 	}
 	
-	// Turn Prompt on
-	with(obj_ShufflePrompt)
-	{
-		active = true;	
-	}
 }

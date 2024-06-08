@@ -131,8 +131,5 @@ function shuffle()
 		shufflePrompt = false;	
 	}
 	
-	with(obj_ShufflePrompt)
-	{
-		active = false;	
-	}
+	layer_sequence_destroy(ShufflePrompt);
 }
