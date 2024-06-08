@@ -2,6 +2,8 @@
 // You can write your code in this editor
 
 
+shufflePrompt = true;
+
 loopElapsedTime = 0;
 netElapsedTime = 0;
 
