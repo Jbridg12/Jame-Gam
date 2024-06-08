@@ -131,5 +131,12 @@ function shuffle()
 		shufflePrompt = false;	
 	}
 	
-	layer_sequence_destroy(ShufflePrompt);
+	var _a = layer_get_all_elements("Instances");
+	for (var _i = 0; _i < array_length(_a); _i++;)
+	{
+	    if layer_get_element_type(_a[_i]) == layerelementtype_sequence
+	    {
+	        layer_sequence_destroy(_a[_i]);
+	    }
+	}
 }
