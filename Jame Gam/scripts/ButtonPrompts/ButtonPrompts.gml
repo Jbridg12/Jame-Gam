@@ -12,6 +12,11 @@ function hit(_player)
 		}
 	}
 	// Throw Card
+	with(obj_AvailableCards)
+	{
+		availableCards--;	
+	}
+	
 	
 	// Start Cooldown (quickens with difficulty)
 	_player.patienceTimer = _player.basePatience;
