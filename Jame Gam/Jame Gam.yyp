@@ -47,6 +47,7 @@
     {"id":{"name":"obj_GameManager","path":"objects/obj_GameManager/obj_GameManager.yy",},},
     {"id":{"name":"obj_hand","path":"objects/obj_hand/obj_hand.yy",},},
     {"id":{"name":"obj_Key","path":"objects/obj_Key/obj_Key.yy",},},
+    {"id":{"name":"obj_ShufflePrompt","path":"objects/obj_ShufflePrompt/obj_ShufflePrompt.yy",},},
     {"id":{"name":"obj_Start","path":"objects/obj_Start/obj_Start.yy",},},
     {"id":{"name":"obj_tips","path":"objects/obj_tips/obj_tips.yy",},},
     {"id":{"name":"Game","path":"rooms/Game/Game.yy",},},

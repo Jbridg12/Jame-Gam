@@ -2,7 +2,7 @@
 // You can write your code in this editor
 
 
-shufflePrompt = true;
+shufflePrompt = false;
 
 loopElapsedTime = 0;
 netElapsedTime = 0;

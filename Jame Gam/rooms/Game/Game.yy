@@ -30,6 +30,7 @@
     {"name":"inst_77963A59","path":"rooms/Game/Game.yy",},
     {"name":"inst_7D025B34","path":"rooms/Game/Game.yy",},
     {"name":"inst_329F3D1F","path":"rooms/Game/Game.yy",},
+    {"name":"inst_48653F47","path":"rooms/Game/Game.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -92,6 +93,7 @@
         {"$GMRInstance":"","%Name":"inst_329F3D1F","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_329F3D1F","objectId":{"name":"obj_FoldedCards","path":"objects/obj_FoldedCards/obj_FoldedCards.yy",},"properties":[
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_FoldedCards","path":"objects/obj_FoldedCards/obj_FoldedCards.yy",},"propertyId":{"name":"index","path":"objects/obj_FoldedCards/obj_FoldedCards.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"4",},
           ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":-74.332,"scaleX":1.0,"scaleY":1.0,"x":965.86554,"y":382.33688,},
+        {"$GMRInstance":"","%Name":"inst_48653F47","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_48653F47","objectId":{"name":"obj_ShufflePrompt","path":"objects/obj_ShufflePrompt/obj_ShufflePrompt.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":776.0,"y":465.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRBackgroundLayer":"","%Name":"Background","animationFPS":30.0,"animationSpeedType":0,"colour":4294967295,"depth":100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"hspeed":0.0,"htiled":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Background","properties":[],"resourceType":"GMRBackgroundLayer","resourceVersion":"2.0","spriteId":{"name":"Sprite2","path":"sprites/Sprite2/Sprite2.yy",},"stretch":false,"userdefinedAnimFPS":false,"userdefinedDepth":false,"visible":true,"vspeed":0.0,"vtiled":false,"x":0,"y":0,},
   ],

@@ -125,4 +125,14 @@ function shuffle()
 	{
 		availableCards = _collected;	
 	}
+	
+	with(obj_GameManager)
+	{
+		shufflePrompt = false;	
+	}
+	
+	with(obj_ShufflePrompt)
+	{
+		active = false;	
+	}
 }
