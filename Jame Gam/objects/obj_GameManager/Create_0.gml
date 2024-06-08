@@ -1,11 +1,12 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+random_set_seed(date_current_datetime());
 
 shufflePrompt = false;
 
 loopElapsedTime = 0;
-netElapsedTime = 0;
+difficultyTimer = 0;
 
 
 // Table Parameters

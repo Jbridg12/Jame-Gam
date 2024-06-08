@@ -3,7 +3,7 @@
 
 var _dT = delta_time/1000000;
 loopElapsedTime += _dT;
-netElapsedTime += _dT;
+difficultyTimer += _dT;
 
 if(remainingLives <= 0)
 {
@@ -12,9 +12,10 @@ if(remainingLives <= 0)
 }
 
 //Perform Significant Difficulty Upgrades
-if(netElapsedTime >= 30)
+if(difficultyTimer >= 30)
 {
 	global.difficulty ++;
+	difficultyTimer = 0;
 	
 }
 
@@ -26,27 +27,13 @@ if(loopElapsedTime >= 1)
 	
 	if(random_range(0, 1) < pNewPlayer && array_length(emptySeats) > 0)
 	{
-		var _seatIndex = floor(random_range(0, array_length(emptySeats)));
+		var _seatIndex = irandom_range(0, array_length(emptySeats)-1);
 		var _seat = emptySeats[_seatIndex];
 		
 		array_delete(emptySeats, _seatIndex, 1);
 		
-		var _temper = random_range(0, 1);
-		var _patience = baseHitTimer + (weightedHitTimer * _temper);
-		
 		// Construct new Player at table
-		var _newPlayer = {
-			seat : _seat,
-			button : _seat + 1,
-			basePatience : _patience,
-			patienceTimer : _patience,
-			temper : _temper,
-			hits : 0,
-			isHitting : false,
-			isCooldown : false,
-			hitCooldown : _patience - baseHitTimer,
-			actionCooldown : actionCooldownBase / global.difficulty
-		};
+		var _newPlayer = new_player(_seat);
 		
 		seatList[_seat] =  _newPlayer;
 		
@@ -77,6 +64,17 @@ for(var _i = 0; _i < array_length(seatList); _i++)
 	if(_player.isHitting)
 	{
 		_player.patienceTimer -= _dT;
+		if(_player.patienceTimer <= 5)
+		{
+			with(obj_alert)
+			{
+				if(index == _player.seat)
+				{
+					// Fold on
+					text = "Uh..."
+				}
+			}
+		}
 		if(_player.patienceTimer <= 0)
 		{
 			//Lose Health and Leave
@@ -137,7 +135,7 @@ for(var _i = 0; _i < array_length(seatList); _i++)
 	
 	if(keyboard_check(ord(_player.button)))
 	{
-		if(_player.isHitting)
+		if(_player.isHitting && !shufflePrompt)
 		{
 			
 			hit(_player);

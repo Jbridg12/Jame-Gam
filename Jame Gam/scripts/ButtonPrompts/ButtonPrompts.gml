@@ -32,6 +32,16 @@ function fold(_player)
 {
 	seatList[_player.seat] = 0;
 	
+	// Reallocate Keys
+	if(_player.createdDifficulty > 6 )
+	{
+		array_push(global.hardKeys, _player.button);
+	}
+	else if(_player.createdDifficulty > 3)
+	{
+		array_push(global.ezKeys, _player.button);
+	}
+
 	with(obj_Key)
 	{
 		if (index == _player.seat)
@@ -79,6 +89,16 @@ function leave(_player)
 {
 	seatList[_player.seat] = 0;
 	
+	// Reallocate Keys
+	if(_player.createdDifficulty > 6 )
+	{
+		array_push(global.hardKeys, _player.button);
+	}
+	else if(_player.createdDifficulty > 3)
+	{
+		array_push(global.ezKeys, _player.button);
+	}
+	
 	with(obj_Key)
 	{
 		if (index == _player.seat)
@@ -93,7 +113,7 @@ function leave(_player)
 		if (index == _player.seat)
 		{
 			//active = false;
-			alarm[0] = game_get_speed(gamespeed_fps) * 2;
+			alarm[1] = game_get_speed(gamespeed_fps) * 2;
 		}
 	}
 	// Clear Text
@@ -103,11 +123,17 @@ function leave(_player)
 		{
 			// Fold on
 			active = true
-			text = "Ugh"
+			text = "I'm Out"
 			alarm[0] = game_get_speed(gamespeed_fps) * 2;
 		}
 	}
+	
 	// Take cards into pile
+	with(obj_CollectedCards)
+	{
+		collectedCards += _player.hits;
+	}
+	
 }
 
 function shuffle()
@@ -131,5 +157,12 @@ function shuffle()
 		shufflePrompt = false;	
 	}
 	
-	layer_sequence_destroy(ShufflePrompt);
+	var _a = layer_get_all_elements("Instances");
+	for (var _i = 0; _i < array_length(_a); _i++;)
+	{
+	    if layer_get_element_type(_a[_i]) == layerelementtype_sequence
+	    {
+	        layer_sequence_destroy(_a[_i]);
+	    }
+	}
 }
