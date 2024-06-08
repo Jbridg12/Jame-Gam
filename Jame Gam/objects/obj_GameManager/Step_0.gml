@@ -12,9 +12,9 @@ if(remainingLives <= 0)
 }
 
 //Perform Significant Difficulty Upgrades
-if(netElapsedTime >= 300)
+if(netElapsedTime >= 30)
 {
-	//loop_elapsed_time = 0;
+	global.difficulty ++;
 	
 }
 
