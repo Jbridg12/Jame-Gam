@@ -27,27 +27,13 @@ if(loopElapsedTime >= 1)
 	
 	if(random_range(0, 1) < pNewPlayer && array_length(emptySeats) > 0)
 	{
-		var _seatIndex = floor(random_range(0, array_length(emptySeats)));
+		var _seatIndex = irandom_range(0, array_length(emptySeats)-1);
 		var _seat = emptySeats[_seatIndex];
 		
 		array_delete(emptySeats, _seatIndex, 1);
 		
-		var _temper = random_range(0, 1);
-		var _patience = baseHitTimer + (weightedHitTimer * _temper);
-		
 		// Construct new Player at table
-		var _newPlayer = {
-			seat : _seat,
-			button : _seat + 1,
-			basePatience : _patience,
-			patienceTimer : _patience,
-			temper : _temper,
-			hits : 0,
-			isHitting : false,
-			isCooldown : false,
-			hitCooldown : _patience - baseHitTimer,
-			actionCooldown : actionCooldownBase / global.difficulty
-		};
+		var _newPlayer = new_player(_seat);
 		
 		seatList[_seat] =  _newPlayer;
 		

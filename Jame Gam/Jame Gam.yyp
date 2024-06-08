@@ -53,6 +53,7 @@
     {"id":{"name":"MainMenu","path":"rooms/MainMenu/MainMenu.yy",},},
     {"id":{"name":"ButtonPrompts","path":"scripts/ButtonPrompts/ButtonPrompts.yy",},},
     {"id":{"name":"Globals","path":"scripts/Globals/Globals.yy",},},
+    {"id":{"name":"NewPlayer","path":"scripts/NewPlayer/NewPlayer.yy",},},
     {"id":{"name":"SeatInit","path":"scripts/SeatInit/SeatInit.yy",},},
     {"id":{"name":"ShufflePrompt","path":"sequences/ShufflePrompt/ShufflePrompt.yy",},},
     {"id":{"name":"spr_HitImage","path":"sprites/spr_HitImage/spr_HitImage.yy",},},
