@@ -12,6 +12,11 @@ function hit(_player)
 		}
 	}
 	// Throw Card
+	with(obj_AvailableCards)
+	{
+		availableCards--;	
+	}
+	
 	
 	// Start Cooldown (quickens with difficulty)
 	_player.patienceTimer = _player.basePatience;
@@ -44,6 +49,18 @@ function fold(_player)
 			alarm[0] = game_get_speed(gamespeed_fps) * 2;
 		}
 	}
+	
+	// Create Folded Hand
+	with(obj_FoldedCards)
+	{
+		if (index == _player.seat)
+		{
+			alarm[0] = game_get_speed(gamespeed_fps) * 2;
+			button = _player.button;
+			amount = _player.hits;
+		}
+	}
+	
 	// Clear Text
 	with(obj_alert)
 	{
@@ -95,5 +112,24 @@ function leave(_player)
 
 function shuffle()
 {
+	var _collected = 0;
+	
+	with(obj_CollectedCards)
+	{
+		_collected = collectedCards;
+		collectedCards = 0;
+	}
+	
 	// Reset Card count
+	with(obj_AvailableCards)
+	{
+		availableCards = _collected;	
+	}
+	
+	with(obj_GameManager)
+	{
+		shufflePrompt = false;	
+	}
+	
+	layer_sequence_destroy(ShufflePrompt);
 }
