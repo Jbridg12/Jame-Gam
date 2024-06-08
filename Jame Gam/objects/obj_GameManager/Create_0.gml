@@ -19,10 +19,10 @@ pHit = 0.75;
 pFold = 0.2;
 
 // Timer
-baseHitTimer = 5;
-weightedHitTimer = 5;
-hitCooldown = 5;
-actionCooldownBase = 2;
+baseHitTimer = 7;
+weightedHitTimer = 7;
+hitCooldown = 7;
+actionCooldownBase = 7;
 
 
 //Victory Conditions
