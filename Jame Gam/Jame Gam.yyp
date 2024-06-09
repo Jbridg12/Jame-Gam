@@ -59,6 +59,7 @@
     {"id":{"name":"Globals","path":"scripts/Globals/Globals.yy",},},
     {"id":{"name":"NewPlayer","path":"scripts/NewPlayer/NewPlayer.yy",},},
     {"id":{"name":"SeatInit","path":"scripts/SeatInit/SeatInit.yy",},},
+    {"id":{"name":"MMText","path":"sequences/MMText/MMText.yy",},},
     {"id":{"name":"ShufflePrompt","path":"sequences/ShufflePrompt/ShufflePrompt.yy",},},
     {"id":{"name":"snd_BGM","path":"sounds/snd_BGM/snd_BGM.yy",},},
     {"id":{"name":"spr_Card1","path":"sprites/spr_Card1/spr_Card1.yy",},},
