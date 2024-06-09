@@ -91,7 +91,6 @@
     {"id":{"name":"spr_Tapping","path":"sprites/spr_Tapping/spr_Tapping.yy",},},
     {"id":{"name":"spr_temp","path":"sprites/spr_temp/spr_temp.yy",},},
     {"id":{"name":"spr_TipJar","path":"sprites/spr_TipJar/spr_TipJar.yy",},},
-    {"id":{"name":"Sprite1","path":"sprites/Sprite1/Sprite1.yy",},},
     {"id":{"name":"Sprite10","path":"sprites/Sprite10/Sprite10.yy",},},
   ],
   "resourceType":"GMProject",

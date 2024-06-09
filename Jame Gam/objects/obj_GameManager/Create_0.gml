@@ -1,6 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
-
+audio_sound_loop_start(snd_BGM, 0.923);
+audio_sound_loop_end(snd_BGM, 45.23);
 audio_play_sound(snd_BGM, 1, true);
 
 random_set_seed(date_current_datetime());

@@ -72,6 +72,7 @@ for(var _i = 0; _i < array_length(seatList); _i++)
 				if(index == _player.seat)
 				{
 					// Fold on
+					active = true;
 					text = "Uh..."
 				}
 			}
@@ -80,7 +81,10 @@ for(var _i = 0; _i < array_length(seatList); _i++)
 		{
 			//Lose Health and Leave
 			remainingLives--;
-			//tipScore -= 100;
+			with(obj_tips)
+			{
+				tips -= 100 * global.difficulty;
+			}
 				
 			// Handle Player Leaving Seat
 			leave(_player);
@@ -115,8 +119,7 @@ for(var _i = 0; _i < array_length(seatList); _i++)
 		{
 			if(index == _player.seat)
 			{
-				text = "Hit";
-				active = true;
+				//active = true;
 			}
 		}
 		
@@ -143,6 +146,14 @@ for(var _i = 0; _i < array_length(seatList); _i++)
 	
 	if(keyboard_check(ord(_player.button)))
 	{
+		if(keyboard_check_pressed(ord(_player.button)) && _player.isHitting == false)
+		{
+			with(obj_tips)
+			{
+				tips -= 25 * global.difficulty;
+			}
+			continue;
+		}
 		if(_player.isHitting && !shufflePrompt)
 		{
 			
