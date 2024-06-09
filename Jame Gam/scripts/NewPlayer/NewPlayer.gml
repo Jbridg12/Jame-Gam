@@ -79,6 +79,7 @@ function new_player( _seat ){
 		{
 			_taken = false;
 			_keyIndex = irandom_range(0, array_length(global.ezestKeys) -1);
+			if(_keyIndex < 0) break;
 			_key = global.ezestKeys[_keyIndex];
 		
 			for(var _i = 0; _i < array_length(obj_GameManager.seatList); _i++)
