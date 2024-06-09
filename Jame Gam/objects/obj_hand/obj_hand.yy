@@ -36,8 +36,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_Tapping",
-    "path":"sprites/spr_Tapping/spr_Tapping.yy",
+    "name":"spr_Female1",
+    "path":"sprites/spr_Female1/spr_Female1.yy",
   },
   "spriteMaskId":null,
   "visible":true,
