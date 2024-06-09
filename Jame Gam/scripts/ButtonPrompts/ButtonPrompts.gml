@@ -46,13 +46,21 @@ function fold(_player)
 	seatList[_player.seat] = 0;
 	
 	// Reallocate Keys
+	if(_player.createdDifficulty > 8 )
+	{
+		array_push(global.allKeys, _player.button);
+	}
 	if(_player.createdDifficulty > 6 )
 	{
 		array_push(global.hardKeys, _player.button);
 	}
-	else if(_player.createdDifficulty > 3)
+	else if(_player.createdDifficulty > 4)
 	{
 		array_push(global.ezKeys, _player.button);
+	}
+	else if(_player.createdDifficulty > 2)
+	{
+		array_push(global.ezestKeys, _player.button);
 	}
 
 	with(obj_Key)
@@ -103,14 +111,23 @@ function leave(_player)
 	seatList[_player.seat] = 0;
 	
 	// Reallocate Keys
+	if(_player.createdDifficulty > 8 )
+	{
+		array_push(global.allKeys, _player.button);
+	}
 	if(_player.createdDifficulty > 6 )
 	{
 		array_push(global.hardKeys, _player.button);
 	}
-	else if(_player.createdDifficulty > 3)
+	else if(_player.createdDifficulty > 4)
 	{
 		array_push(global.ezKeys, _player.button);
 	}
+	else if(_player.createdDifficulty > 2)
+	{
+		array_push(global.ezestKeys, _player.button);
+	}
+	
 	
 	with(obj_Key)
 	{
