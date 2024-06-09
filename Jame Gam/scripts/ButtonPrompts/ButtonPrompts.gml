@@ -2,7 +2,9 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function hit(_player)
 {
-	
+	var _posx = 0;
+	var _posy = 0;
+	var _inst = instance_create_layer(x, y, "Instances", obj_card);
 	// Alert Logic
 	with(obj_alert)
 	{
@@ -21,6 +23,10 @@ function hit(_player)
 	{
 		if(index == _player.seat)
 		{
+			_posx = x;
+			_posy = y;
+			_inst.destinationX = x;
+			_inst.destinationY = y;
 			event_user(0);
 		}
 	}
