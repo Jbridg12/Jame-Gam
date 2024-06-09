@@ -3,6 +3,7 @@
 function new_player( _seat ){
 
 	var _player;
+	var _sprite;
 	var _key = string("{0}", _seat + 1);
 	var _keyIndex;
 	var _taken = false;
@@ -93,8 +94,18 @@ function new_player( _seat ){
 		
 	}
 	
+	if(random_range(0,1) <= 0.5)
+	{
+		_sprite = global.femaleHands[irandom(9)];
+	}
+	else
+	{
+		_sprite = global.maleHands[irandom(8)];
+	}
+	
 	_player = {
 		seat : _seat,
+		sprite : _sprite,
 		button : _key,
 		basePatience : _patience,
 		patienceTimer : _patience,

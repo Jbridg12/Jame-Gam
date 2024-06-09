@@ -42,6 +42,7 @@ if(loopElapsedTime >= 1)
 			if (index == _seat)
 			{
 				active = true;
+				sprite_index = _newPlayer.sprite;
 			}
 		}
 		with(obj_Key)
